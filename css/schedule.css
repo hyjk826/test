@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.schedule{
+    border: 1px solid orange;
+    width: 800px;
+    height: 100%;
+    margin: auto;
+}
+
+.add{
+    border: 1px solid orange;
+}
+
+.side{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 0px;
+    background-color: brown;
+    z-index: 1;
+    padding-top: 100px;
+    overflow-x: hidden;
+    transition: all 1s;
+}
+
+.side a{
+    padding: 8px 8px 8px 100px;
+    text-decoration: none;
+    font-size: 20px;
+    color: aliceblue;
+    display: block;
+}
+
+.side a:hover{
+    color: white;
+}
+
+.side .closebtn{
+    position: absolute;
+    top: 0px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 32px;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.month{
+    display: flex;
+    align-items: center;
+}
+
+.dayBox{
+    width: 600px;
+    border: 1px solid green; 
+    display: flex;
+    margin-top: 10px;
+}
+
+.day{
+    width: 80px;
+    height: 80px;
+    background-color: black;
+    color : white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

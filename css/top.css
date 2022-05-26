@@ -1,0 +1,23 @@
+body{
+    margin: 0;
+    padding : 0;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+header{
+    display : flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 800px;
+    margin: auto;
+    border: 1px solid green;
+}
+
+.homeImg{
+    width: 150px;
+    padding : 10px;
+}

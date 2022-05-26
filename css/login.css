@@ -1,0 +1,24 @@
+table{
+    margin: auto;
+}
+
+tr{
+    height: 40px;
+}
+
+td{
+    border: 1px solid black;
+    text-align: center;
+}
+
+.sub{
+    background-color: aquamarine;
+}
+
+.table{
+    margin-top: 50px;
+}
+
+.submit{
+    width: 240px;
+}

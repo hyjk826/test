@@ -1,0 +1,21 @@
+table{
+    margin:auto;
+}
+
+td{
+    height: 50px;
+    text-align: center;
+}
+
+.input{
+    width: 200px;
+    height: 20px;
+}
+
+.main{
+    margin-top: 50px;
+}
+
+.sub{
+    background-color: aquamarine;
+}
