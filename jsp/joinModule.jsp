@@ -67,7 +67,7 @@
             int month = now.getMonth().getValue();
             session.setAttribute("year", Integer.toString(year));
             session.setAttribute("month", Integer.toString(month));
-            response.sendRedirect("schedule.jsp");
+            response.sendRedirect("schedulePage.jsp");
         }
     }
 %>

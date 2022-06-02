@@ -10,7 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/schedule.css">
+    <link rel="stylesheet" href="../css/otherSchedulePage.css">
+    <link rel="stylesheet" href="../css/scheduleModifyPage.css">
 </head>
 <body>
     <%
@@ -57,26 +58,22 @@
             v.add(rs.getString(6));
             v.add(rs.getString(7));
             v.add(rs.getString(8));
+            v.add(rs.getString(9));
             schedule.add(v);
         }
         int[] ch = new int[32];
         for(int i = 1; i <= 31; ++i){
             for(int j = 0; j < schedule.size(); ++j){
-                if(Integer.parseInt(schedule.get(j).get(4)) == i){
+                if(Integer.parseInt(schedule.get(j).get(5)) == i){
                     ch[i]++;
                 }
             }
         }
     %>
-    <%@ include file = "../jsp/top.jsp" %>
-    <div id = "menu" class="side">
-        <a href="" class="closebtn" onclick="closeSide()">&times;</a>
-        <%for(int i = 0; i < vec.size(); ++i){%>
-            <a href='otherNameProc.jsp?otherName=<%=vec.get(i)%>'><%=vec.get(i)%></a>
-        <%}%>
-    </div>
+    <%@ include file = "../jsp/header.jsp" %>
+    <div class="m">
     <div class="schedule">
-        <input type="button" value="버튼" onclick="openSide()" class="openbtn">
+        <form action="scheduleModifyModule.jsp" method="post">
         <div class="main">
             <h2><%=year%>년</h2>
             <div class="month">
@@ -92,26 +89,25 @@
                             </div>    
                             <div class="content">
                             <%for(int j = 0; j < schedule.size(); ++j){
-                                if(Integer.parseInt(schedule.get(j).get(4)) == i){%>
-                                      <p><%=schedule.get(j).get(5)%>:<%=schedule.get(j).get(6)%>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                                      <input type="text" value="<%=schedule.get(j).get(7)%>">
+                                String num = schedule.get(j).get(0);
+                                String day = schedule.get(j).get(5);
+                                String hour = schedule.get(j).get(6);
+                                String minute = schedule.get(j).get(7);
+                                String content = schedule.get(j).get(8);
+                                if(Integer.parseInt(day) == i){%>
+                                      <p><%=hour%>:<%=minute%>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name = "content" value="<%=content%>"></p>
+                                      <input type="hidden" name = "modify" value="<%=num%>">
                                 <%}
                             }%>
                             </div>   
                         </div>
                     <%}
-                    
                 }
             %>
+            <input type="submit" value="수정하기" class="modify"> 
         </div>
+        </form>
     </div>
-    <script>
-        function openSide(){
-            document.querySelector("#menu").style.width = "20%";
-        }
-        function closeSide(){
-            document.querySelector("#menu").style.width = "0px";
-        }
-    </script>
+    </div>
 </body>
 </html>

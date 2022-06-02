@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/schedule.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <%
@@ -69,21 +70,23 @@
             }
         }
     %>
-    <%@ include file = "../jsp/top.jsp" %>
+    <%@ include file = "../jsp/header.jsp" %>
     <div id = "menu" class="side">
         <a href="" class="closebtn" onclick="closeSide()">&times;</a>
         <%for(int i = 0; i < vec.size(); ++i){%>
-            <a href='otherNameProc.jsp?otherName=<%=vec.get(i)%>'><%=vec.get(i)%></a>
+            <a href='otherNameModule.jsp?otherName=<%=vec.get(i)%>'><%=vec.get(i)%></a>
         <%}%>
     </div>
-    <form action="scheduleDeleteProc.jsp" method="post">
+    <div class="m">
     <div class="schedule">
-        <input type="button" value="버튼" onclick="openSide()" class="openbtn">
+        <div class="openbtn">
+            <i class="fa fa-bars" onclick="openSide()"></i>
+        </div>
         <div class="main">
             <h2><%=year%>년</h2>
             <div class="month">
-                <input type="button" value="&lt;" onclick="location.href='leftMonthProc.jsp'">
-                <p><%=month%>월</p><input type="button" value="&gt;" onclick="location.href='rightMonthProc.jsp'">
+                <input type="button" value="&lt;" onclick="location.href='beforeMonthModule.jsp'">
+                <p><%=month%>월</p><input type="button" value="&gt;" onclick="location.href='afterMonthModule.jsp'">
             </div>
             <%
                 for(int i = 1; i <= 31; ++i){
@@ -94,14 +97,12 @@
                             </div>    
                             <div class="content">
                             <%for(int j = 0; j < schedule.size(); ++j){
-                                String num = schedule.get(j).get(0);
                                 String day = schedule.get(j).get(5);
                                 String hour = schedule.get(j).get(6);
                                 String minute = schedule.get(j).get(7);
                                 String content = schedule.get(j).get(8);
                                 if(Integer.parseInt(day) == i){%>
-                                      <p><%=hour%>:<%=minute%>&nbsp;&nbsp;&nbsp;&nbsp;<%=content%><input type="checkbox" name="delete" value="<%=num%>"></p>
-                                      
+                                      <p><%=hour%>:<%=minute%>&nbsp;&nbsp;&nbsp;&nbsp;<%=content%></p>
                                 <%}
                             }%>
                             </div>   
@@ -109,9 +110,22 @@
                     <%}
                 }
             %>
-            <input type="submit" value = "삭제하기">
+            <div class="button">
+                <input type="button" value="수정" onclick="location.href='scheduleModifyPage.jsp'" class="modify"> 
+                <input type="button" value="삭제" onclick="location.href='scheduleDeletePage.jsp'" class="delete">
+            </div>
         </div>
-        </form>
+    </div>
+    <form action="scheduleAddmodule.jsp" method="post" name = "addForm">
+    <div class="scheduleAdd">
+            <input type="date" name = "date">
+            <input type="time" name = "time">
+            <textarea name="content" cols="30" rows="10">
+            </textarea>
+            <input type="button" value="일정 추가하기" onclick = "addCheck()" class="addButton">
+            <input type="reset" value = "취소">
+    </div>
+    </form>
     </div>
     <script>
         function openSide(){
@@ -119,6 +133,25 @@
         }
         function closeSide(){
             document.querySelector("#menu").style.width = "0px";
+        }
+        function addCheck(){
+            var form = document.addForm;
+            if(form.date.value == ""){
+                alert("날짜를 입력해주십시오");
+                form.date.focus();
+                return false;
+            }
+            else if(form.time.value == ""){
+                alert("시간을 입력해주십시오");
+                form.time.focus();
+                return false;
+            }
+            else if(form.content.value.length == 0){
+                alert("일정을 입력해주십시오");
+                form.content.focus();
+                return false;
+            }
+            form.submit();
         }
     </script>
 </body>

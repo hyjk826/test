@@ -5,12 +5,9 @@
 
 .schedule{
     border: 1px solid orange;
-    width: 600px;
+    width: 800px;
 }
 
-.add{
-    border: 1px solid orange;
-}
 
 .side{
     position: fixed;
@@ -85,32 +82,8 @@
     height: 100%;
 }
 
-.scheduleAdd{
-    width: 300px;
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-}
-
-.button{
-    margin-top: 300px;
-}
-
-.modify, .delete{
-    background-color: yellow;
-    width: 100px;
-    height: 50px;
-}
-
 @media screen and (max-width: 800px) {
     .m{
-        flex-direction: column;
         width: 97%;
-    }
-    .schedule{
-        width: 100%;
-    }
-    .scheduleAdd{
-        width: 100%;
     }
 }

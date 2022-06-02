@@ -19,7 +19,7 @@
             session.setAttribute("month", Integer.toString(month));
             session.setAttribute("year", Integer.toString(year));
         }
-        response.sendRedirect("schedule.jsp");
+        response.sendRedirect("schedulePage.jsp");
     %>
 </body>
 </html>

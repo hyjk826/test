@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-    <%@ include file = "jsp/top.jsp" %>
-    <form action="jsp/loginProc.jsp" method="post">
+    <%@ include file = "jsp/header.jsp" %>
+    <form action="jsp/loginModule.jsp" method="post">
     <table class="table">
         <tr>
             <td colspan="2" class="sub">로그인</td>

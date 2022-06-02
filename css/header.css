@@ -1,6 +1,7 @@
 body{
     margin: 0;
     padding : 0;
+    font-family:'Malgun Gothic';
 }
 
 a{
@@ -14,10 +15,16 @@ header{
     justify-content: space-between;
     width: 800px;
     margin: auto;
-    border: 1px solid green;
+    border: 1px solid black;
 }
 
 .homeImg{
     width: 150px;
     padding : 10px;
+}
+
+@media screen and (max-width: 800px) {
+    header{
+        width: 97%;
+    }
 }

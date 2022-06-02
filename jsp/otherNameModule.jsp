@@ -15,7 +15,7 @@
     <%
         String name = (String)request.getParameter("otherName");
         session.setAttribute("otherName", name);
-        response.sendRedirect("otherSchedule.jsp");
+        response.sendRedirect("otherSchedulePage.jsp");
     %>
 </body>
 </html>

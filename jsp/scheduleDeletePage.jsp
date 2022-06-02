@@ -10,7 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/schedule.css">
+    <link rel="stylesheet" href="../css/otherSchedulePage.css">
+    <link rel="stylesheet" href="../css/scheduleDeletePage.css">
 </head>
 <body>
     <%
@@ -69,16 +70,17 @@
             }
         }
     %>
-    <%@ include file = "../jsp/top.jsp" %>
+    <%@ include file = "../jsp/header.jsp" %>
+    
     <div id = "menu" class="side">
         <a href="" class="closebtn" onclick="closeSide()">&times;</a>
         <%for(int i = 0; i < vec.size(); ++i){%>
             <a href='otherNameProc.jsp?otherName=<%=vec.get(i)%>'><%=vec.get(i)%></a>
         <%}%>
     </div>
-    <form action="scheduleModiyProc.jsp" method="post">
+    <div class="m">
     <div class="schedule">
-        <input type="button" value="버튼" onclick="openSide()" class="openbtn">
+        <form action="scheduleDeleteModule.jsp" method="post">
         <div class="main">
             <h2><%=year%>년</h2>
             <div class="month">
@@ -100,8 +102,8 @@
                                 String minute = schedule.get(j).get(7);
                                 String content = schedule.get(j).get(8);
                                 if(Integer.parseInt(day) == i){%>
-                                      <p><%=hour%>:<%=minute%>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name = "content" value="<%=content%>"></p>
-                                      <input type="hidden" name = "modify" value="<%=num%>">
+                                      <p><%=hour%>:<%=minute%>&nbsp;&nbsp;&nbsp;&nbsp;<%=content%><input type="checkbox" name="delete" value="<%=num%>"></p>
+                                      
                                 <%}
                             }%>
                             </div>   
@@ -109,10 +111,11 @@
                     <%}
                 }
             %>
+            <input type="submit" value = "삭제하기" class="delete">
         </div>
-        <input type="submit" value="수정하기"> 
+        </form>
     </div>
-    </form>
+    </div>
     <script>
         function openSide(){
             document.querySelector("#menu").style.width = "20%";

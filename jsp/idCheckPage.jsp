@@ -3,8 +3,6 @@
 <%@ page import = "java.sql.Connection" %>
 <%@ page import = "java.sql.PreparedStatement" %>
 <%@ page import = "java.sql.ResultSet" %>
-<%@ page import = "java.util.Vector" %>
-<%@ page import = "java.util.ArrayList" %>;
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,22 +11,26 @@
 </head>
 <body>
     <%
-        request.setCharacterEncoding("utf-8");
+        String id = request.getParameter("id");
         Class.forName("com.mysql.jdbc.Driver");
         Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "stageus", "1234");
         PreparedStatement pstmt;
         ResultSet rs;
         String sql;
-        String[] num = request.getParameterValues("modify");
-        String[] content = request.getParameterValues("content");
-        for(int i = 0; i < num.length; ++i){
-            sql ="UPDATE schedule set content = ? where scheduleNum = ?";
-            pstmt = connect.prepareStatement(sql);
-            pstmt.setString(1, content[i]);
-            pstmt.setString(2, num[i]);
-            pstmt.executeUpdate();
+        sql = "select count(*) cnt from memberInfo where id = ?";
+        pstmt = connect.prepareStatement(sql);
+        pstmt.setString(1, id);
+        rs = pstmt.executeQuery();
+        int cnt = -1;
+        while(rs.next()){
+            cnt = rs.getInt("cnt");
         }
-        response.sendRedirect("schedule.jsp");
+        if(cnt == 0){
+            out.print("사용가능한 아이디입니다");
+        }
+        else{
+            out.print("이미 사용중인 아이디입니다");
+        }
     %>
 </body>
 </html>

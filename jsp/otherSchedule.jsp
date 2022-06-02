@@ -10,7 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/schedule.css">
+    <link rel="stylesheet" href="../css/otherSchedulePage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <%
@@ -70,20 +71,23 @@
             }
         }
     %>
-    <%@ include file = "../jsp/top.jsp" %>
+    <%@ include file = "../jsp/header.jsp" %>
+    <div class="m">
     <div id = "menu" class="side">
         <a href="" class="closebtn" onclick="closeSide()">&times;</a>
         <%for(int i = 0; i < vec.size(); ++i){%>
-            <a href="otherNameProc.jsp?otherName=<%=vec.get(i)%>"><%=vec.get(i)%></a>
+            <a href="otherNameModule.jsp?otherName=<%=vec.get(i)%>"><%=vec.get(i)%></a>
         <%}%>
     </div>
     <div class="schedule">
-        <input type="button" value="버튼" onclick="openSide()" class="openbtn">
+        <div class="openbtn">
+            <i class="fa fa-bars" onclick="openSide()"></i>
+        </div>
         <div class="main">
             <h2><%=year%>년</h2>
             <div class="month">
-                <input type="button" value="&lt;" onclick="location.href='leftMonthOtherProc.jsp'">
-                <p><%=month%>월</p><input type="button" value="&gt;" onclick="location.href='rightMonthOtherProc.jsp'">
+                <input type="button" value="&lt;" onclick="location.href='otherBeforeMonthModule.jsp'">
+                <p><%=month%>월</p><input type="button" value="&gt;" onclick="location.href='otherAfterMonthModule.jsp'">
             </div>
             <%
                 for(int i = 1; i <= 31; ++i){
@@ -109,6 +113,7 @@
                 }
             %>
         </div>
+    </div>
     </div>
     <script>
         function openSide(){
