@@ -23,7 +23,20 @@
 <!-- a태그 -->
 [스테이지어스 홈페이지](http://stageus.co.kr)
 
+<!-- img -->
+![엑스 박스](img/googlelogo_color_272x92dp.png)
 
+<!-- 코드태크 -->
+```html
+<div>
+    <p>hello world</p>
+</div>
+```
+```c++
+    int main(){
+        return 0;
+    }
+```
 
 
 
